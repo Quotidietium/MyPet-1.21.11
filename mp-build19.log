@@ -1,0 +1,129 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.4/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :generateEffectiveLombokConfig UP-TO-DATE
+
+> Task :compileJava
+警告: [options] 源值 8 已过时，将在未来发行版中删除
+警告: [options] 目标值 8 已过时，将在未来发行版中删除
+警告: [options] 要隐藏有关已过时选项的警告, 请使用 -Xlint:-options。
+3 个警告
+
+> Task :downloadTranslations
+Cloning into 'D:\Minecraft\TEMP\mypet-work\build\resources\main\locale'...
+
+> Task :processResources
+file 'D:\Minecraft\TEMP\mypet-work\src\main\resources\exp.js' will be copied to 'D:\Minecraft\TEMP\mypet-work\build\resources\main\exp.js', overwriting file 'D:\Minecraft\TEMP\mypet-work\src\main\resources\exp.js', which has already been copied there.
+file 'D:\Minecraft\TEMP\mypet-work\src\main\resources\items.json' will be copied to 'D:\Minecraft\TEMP\mypet-work\build\resources\main\items.json', overwriting file 'D:\Minecraft\TEMP\mypet-work\src\main\resources\items.json', which has already been copied there.
+file 'D:\Minecraft\TEMP\mypet-work\src\main\resources\licences\Gson.txt' will be copied to 'D:\Minecraft\TEMP\mypet-work\build\resources\main\licences\Gson.txt', overwriting file 'D:\Minecraft\TEMP\mypet-work\src\main\resources\licences\Gson.txt', which has already been copied there.
+file 'D:\Minecraft\TEMP\mypet-work\src\main\resources\licences\KNBT.txt' will be copied to 'D:\Minecraft\TEMP\mypet-work\build\resources\main\licences\KNBT.txt', overwriting file 'D:\Minecraft\TEMP\mypet-work\src\main\resources\licences\KNBT.txt', which has already been copied there.
+file 'D:\Minecraft\TEMP\mypet-work\src\main\resources\licences\NanoHttpd.txt' will be copied to 'D:\Minecraft\TEMP\mypet-work\build\resources\main\licences\NanoHttpd.txt', overwriting file 'D:\Minecraft\TEMP\mypet-work\src\main\resources\licences\NanoHttpd.txt', which has already been copied there.
+file 'D:\Minecraft\TEMP\mypet-work\src\main\resources\locale-readme.txt' will be copied to 'D:\Minecraft\TEMP\mypet-work\build\resources\main\locale-readme.txt', overwriting file 'D:\Minecraft\TEMP\mypet-work\src\main\resources\locale-readme.txt', which has already been copied there.
+file 'D:\Minecraft\TEMP\mypet-work\src\main\resources\NOTICE.txt' will be copied to 'D:\Minecraft\TEMP\mypet-work\build\resources\main\NOTICE.txt', overwriting file 'D:\Minecraft\TEMP\mypet-work\src\main\resources\NOTICE.txt', which has already been copied there.
+file 'D:\Minecraft\TEMP\mypet-work\src\main\resources\pet-shops.yml' will be copied to 'D:\Minecraft\TEMP\mypet-work\build\resources\main\pet-shops.yml', overwriting file 'D:\Minecraft\TEMP\mypet-work\src\main\resources\pet-shops.yml', which has already been copied there.
+file 'D:\Minecraft\TEMP\mypet-work\src\main\resources\plugin.yml' will be copied to 'D:\Minecraft\TEMP\mypet-work\build\resources\main\plugin.yml', overwriting file 'D:\Minecraft\TEMP\mypet-work\src\main\resources\plugin.yml', which has already been copied there.
+file 'D:\Minecraft\TEMP\mypet-work\src\main\resources\skilltrees\Combat.st.json' will be copied to 'D:\Minecraft\TEMP\mypet-work\build\resources\main\skilltrees\Combat.st.json', overwriting file 'D:\Minecraft\TEMP\mypet-work\src\main\resources\skilltrees\Combat.st.json', which has already been copied there.
+file 'D:\Minecraft\TEMP\mypet-work\src\main\resources\skilltrees\Farm.st.json' will be copied to 'D:\Minecraft\TEMP\mypet-work\build\resources\main\skilltrees\Farm.st.json', overwriting file 'D:\Minecraft\TEMP\mypet-work\src\main\resources\skilltrees\Farm.st.json', which has already been copied there.
+file 'D:\Minecraft\TEMP\mypet-work\src\main\resources\skilltrees\PvP.st.json' will be copied to 'D:\Minecraft\TEMP\mypet-work\build\resources\main\skilltrees\PvP.st.json', overwriting file 'D:\Minecraft\TEMP\mypet-work\src\main\resources\skilltrees\PvP.st.json', which has already been copied there.
+file 'D:\Minecraft\TEMP\mypet-work\src\main\resources\skilltrees\Ride.st.json' will be copied to 'D:\Minecraft\TEMP\mypet-work\build\resources\main\skilltrees\Ride.st.json', overwriting file 'D:\Minecraft\TEMP\mypet-work\src\main\resources\skilltrees\Ride.st.json', which has already been copied there.
+file 'D:\Minecraft\TEMP\mypet-work\src\main\resources\skilltrees\Utility.st.json' will be copied to 'D:\Minecraft\TEMP\mypet-work\build\resources\main\skilltrees\Utility.st.json', overwriting file 'D:\Minecraft\TEMP\mypet-work\src\main\resources\skilltrees\Utility.st.json', which has already been copied there.
+
+> Task :classes
+> Task :api:generateEffectiveLombokConfig UP-TO-DATE
+> Task :api:compileJava UP-TO-DATE
+> Task :api:processResources SKIPPED
+> Task :api:classes UP-TO-DATE
+> Task :api:jar
+> Task :plugin:generateEffectiveLombokConfig UP-TO-DATE
+> Task :skills:generateEffectiveLombokConfig UP-TO-DATE
+> Task :skills:compileJava UP-TO-DATE
+> Task :plugin:compileJava UP-TO-DATE
+> Task :plugin:processResources SKIPPED
+> Task :plugin:classes UP-TO-DATE
+> Task :plugin:jar UP-TO-DATE
+> Task :skills:processResources SKIPPED
+> Task :skills:classes UP-TO-DATE
+> Task :skills:jar
+> Task :nms:v1_21_R7:processResources SKIPPED
+> Task :nms:v1_21_R7:generateEffectiveLombokConfig
+
+> Task :nms:v1_21_R7:compileJava
+注: 某些输入文件使用或覆盖了已过时的 API。
+注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+注: 某些输入文件使用了未经检查或不安全的操作。
+注: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+
+> Task :nms:v1_21_R7:classes
+
+> Task :nms:v1_21_R7:jar
+> remapMojangToSpigot
+  Input: D:\Minecraft\TEMP\mypet-work\nms\v1_21_R7\build\libs\v1_21_R7.jar
+  Intermediate: D:\Minecraft\TEMP\mypet-work\nms\v1_21_R7\build\tmp\jar\v1_21_R7-obf.jar
+  Output: D:\Minecraft\TEMP\mypet-work\nms\v1_21_R7\build\libs\v1_21_R7.jar
+  CraftBukkit version: 1.21.11-R0.2-SNAPSHOT
+> remapMojangToObfuscated
+  Input: D:\Minecraft\TEMP\mypet-work\nms\v1_21_R7\build\libs\v1_21_R7.jar
+  Output: D:\Minecraft\TEMP\mypet-work\nms\v1_21_R7\build\tmp\jar\v1_21_R7-obf.jar
+  CraftBukkit version: 1.21.11-R0.2-SNAPSHOT
+Loading mappings
+Loading mappings...  0%
+Loading mappings... 10%
+Loading mappings... 20%
+Loading mappings... 30%
+Loading mappings... 40%
+Loading mappings... 50%
+Loading mappings... 60%
+0 packages, 7163 classes, 32405 fields, 66676 methods
+Remapping final jar
+Remapping jar...  1%
+Remapping jar... 10%
+Remapping jar... 20%
+Remapping jar... 30%
+Remapping jar... 40%
+Remapping jar... 50%
+Remapping jar... 60%
+Remapping jar... 70%
+Remapping jar... 80%
+Remapping jar... 90%
+Remapping jar... 100%
+> remapObfuscatedToSpigot
+  Input: D:\Minecraft\TEMP\mypet-work\nms\v1_21_R7\build\tmp\jar\v1_21_R7-obf.jar
+  Output: D:\Minecraft\TEMP\mypet-work\nms\v1_21_R7\build\libs\v1_21_R7.jar
+  CraftBukkit version: 1.21.11-R0.2-SNAPSHOT
+Loading mappings
+Loading mappings...  0%
+Loading mappings... 10%
+Loading mappings... 20%
+Loading mappings... 30%
+Loading mappings... 40%
+Loading mappings... 50%
+Loading mappings... 60%
+Loading mappings... 70%
+Loading mappings... 80%
+Loading mappings... 90%
+Loading mappings... 100%
+0 packages, 4416 classes, 0 fields, 0 methods
+Remapping final jar
+Remapping jar...  1%
+Remapping jar... 10%
+Remapping jar... 20%
+Remapping jar... 30%
+Remapping jar... 40%
+Remapping jar... 50%
+Remapping jar... 60%
+Remapping jar... 70%
+Remapping jar... 80%
+Remapping jar... 90%
+Remapping jar... 100%
+
+> Task :shadowJar
+
+[Incubating] Problems report is available at: file:///D:/Minecraft/TEMP/mypet-work/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14.4/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 44s
+17 actionable tasks: 9 executed, 8 up-to-date

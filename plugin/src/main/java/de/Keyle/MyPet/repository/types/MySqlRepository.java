@@ -879,8 +879,9 @@ public class MySqlRepository implements Repository {
                     case "VARCHAR":
                         try {
                             JsonObject jsonObject = gson.fromJson(resultSet.getString(column), JsonObject.class);
-                            for (String uuid : jsonObject.keySet()) {
-                                String petUUID = jsonObject.get(uuid).getAsString();
+                            for (java.util.Map.Entry<String, com.google.gson.JsonElement> entry : jsonObject.entrySet()) {
+                                String uuid = entry.getKey();
+                                String petUUID = entry.getValue().getAsString();
                                 petPlayer.setMyPetForWorldGroup(uuid, UUID.fromString(petUUID));
                             }
                         } catch (JsonParseException e) {

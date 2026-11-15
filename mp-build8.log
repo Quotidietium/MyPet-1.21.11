@@ -1,0 +1,56 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.4/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :api:generateEffectiveLombokConfig UP-TO-DATE
+> Task :api:compileJava UP-TO-DATE
+> Task :plugin:generateEffectiveLombokConfig UP-TO-DATE
+> Task :skills:generateEffectiveLombokConfig UP-TO-DATE
+> Task :skills:compileJava UP-TO-DATE
+
+> Task :plugin:compileJava
+警告: [options] 源值 8 已过时，将在未来发行版中删除
+警告: [options] 目标值 8 已过时，将在未来发行版中删除
+警告: [options] 要隐藏有关已过时选项的警告, 请使用 -Xlint:-options。
+D:\Minecraft\TEMP\mypet-work\stub\net\citizensnpcs\api\CitizensAPI.java:21: 错误: 找不到符号
+    public static NPCSelector getDefaultNPCSelector() {
+                  ^
+  符号:   类 NPCSelector
+  位置: 类 CitizensAPI
+注: 某些输入文件使用或覆盖了已过时的 API。
+注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+1 个错误
+3 个警告
+
+> Task :plugin:compileJava FAILED
+
+[Incubating] Problems report is available at: file:///D:/Minecraft/TEMP/mypet-work/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':plugin:compileJava'.
+> Compilation failed; see the compiler output below.
+  警告: [options] 目标值 8 已过时，将在未来发行版中删除
+  注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+  警告: [options] 源值 8 已过时，将在未来发行版中删除
+  D:\Minecraft\TEMP\mypet-work\stub\net\citizensnpcs\api\CitizensAPI.java:21: 错误: 找不到符号
+      public static NPCSelector getDefaultNPCSelector() {
+                    ^
+    符号:   类 NPCSelector
+    位置: 类 CitizensAPI
+  警告: [options] 要隐藏有关已过时选项的警告, 请使用 -Xlint:-options。
+  注: 某些输入文件使用或覆盖了已过时的 API。
+  1 个错误
+  3 个警告
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14.4/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 11s
+6 actionable tasks: 1 executed, 5 up-to-date
