@@ -12,7 +12,7 @@ softdepend:
   - My_Worlds
   - MythicMobs
   - PlaceholderAPI
-  - ProtocolLib
+  - packetevents
   - Vault
   - WGCustomFlags
   - WorldGuard
