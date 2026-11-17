@@ -28,6 +28,7 @@ import com.github.retrooper.packetevents.event.PacketSendEvent;
 import com.github.retrooper.packetevents.protocol.packettype.PacketType;
 import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientInteractEntity;
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerEntityHeadLook;
+import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerEntityRelativeMoveAndRotation;
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerEntityRotation;
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerEntityTeleport;
 import de.Keyle.MyPet.MyPetApi;
@@ -135,9 +136,18 @@ public class PacketEventsHook implements PluginHook {
                 if (event.isCancelled()) {
                     return;
                 }
-                if (event.getPacketType() == PacketType.Play.Server.ENTITY_ROTATION
-                        || event.getPacketType() == PacketType.Play.Server.ENTITY_RELATIVE_MOVE_AND_ROTATION) {
+                if (event.getPacketType() == PacketType.Play.Server.ENTITY_ROTATION) {
                     WrapperPlayServerEntityRotation packet = new WrapperPlayServerEntityRotation(event);
+                    if (isEnderDragonPet(packet.getEntityId(), event)) {
+                        packet.setYaw(adjustYaw(packet.getYaw()));
+                    }
+                } else if (event.getPacketType() == PacketType.Play.Server.ENTITY_RELATIVE_MOVE_AND_ROTATION) {
+                    // 修复（2026-11-17）：此包布局含 deltaX/Y/Z 三个 short，必须用对应 wrapper。
+                    // 此前误用 WrapperPlayServerEntityRotation（无位移布局）——packetevents 出站后处理
+                    // 只要构造过 wrapper 即按其布局全量重编码（PacketEventsImplHelper.handlePacketSend
+                    // 无条件 clear+write，不检查 setter 调用），导致全服 move_entity_pos_rot 包损坏、
+                    // 所有入服客户端 DecoderException 被踢。
+                    WrapperPlayServerEntityRelativeMoveAndRotation packet = new WrapperPlayServerEntityRelativeMoveAndRotation(event);
                     if (isEnderDragonPet(packet.getEntityId(), event)) {
                         packet.setYaw(adjustYaw(packet.getYaw()));
                     }
