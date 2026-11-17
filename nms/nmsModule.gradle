@@ -40,7 +40,8 @@ afterEvaluate {
                 for (inputFile in outputFiles) {
                     File intermediateFile = new File(temporaryDir, inputFile.name.replace('.jar', '-obf.jar'))
                     File outputFile = inputFile
-                    remapMojangToSpigot(inputFile, intermediateFile, outputFile, craftbukkitVersion)
+                    def remap = project.ext.get("remapMojangToSpigot")
+                    remap(inputFile, intermediateFile, outputFile, craftbukkitVersion)
                 }
             }
         }

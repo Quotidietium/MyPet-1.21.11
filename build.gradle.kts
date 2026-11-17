@@ -64,7 +64,7 @@ subprojects {
 
     java {
         toolchain {
-            languageVersion.set(JavaLanguageVersion.of(21))
+            languageVersion.set(JavaLanguageVersion.of(25))
         }
     }
 }
@@ -208,7 +208,7 @@ tasks.build { dependsOn(tasks.shadowJar) }
 /* ---------- Root compilation settings (Java 8 output) ---------- */
 
 java {
-    toolchain { languageVersion.set(JavaLanguageVersion.of(21)) }
+    toolchain { languageVersion.set(JavaLanguageVersion.of(25)) }
 }
 tasks.withType<JavaCompile>().configureEach {
     options.release.set(8)

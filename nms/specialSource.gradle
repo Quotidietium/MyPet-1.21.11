@@ -1,17 +1,5 @@
 // Code copied from https://github.com/Shopkeepers/Shopkeepers/tree/master
 
-buildscript {
-    repositories {
-        mavenCentral()
-        mavenLocal()
-    }
-
-    configurations.create('specialSource')
-
-    dependencies {
-        specialSource 'net.md-5:SpecialSource:1.11.5:shaded'
-    }
-}
 
 // Spigot server code remapping: https://www.spigotmc.org/threads/spigot-bungeecord-1-17-1-17-1.510208/
 // These dependencies and mappings are installed into the local Maven repository when BuildTools builds the Spigot dependencies.
@@ -41,9 +29,20 @@ def findInCache = { group, module, version, fileName ->
 }
 
 
-def specialSource = buildscript.configurations.specialSource.resolvedConfiguration.getFirstLevelModuleDependencies().find {
-    it.moduleGroup == 'net.md-5' && it.moduleName == 'SpecialSource'
-}.moduleArtifacts.first().file.path
+// Gradle 9 兼容：不再经 buildscript 配置容器解析，直接查缓存（gradle cache 优先，.m2 兜底；
+// shaded jar 已垫入 ~/.m2/net/md-5/SpecialSource/1.11.5/）
+def specialSource = findInCache("net.md-5", "SpecialSource", "1.11.5", "SpecialSource-1.11.5-shaded.jar")
+
+// Gradle 9 兼容：Project.exec(Closure) 重载已移除，改用 ProcessBuilder 直跑（语义等价：继承 cwd/env 的 java 子进程）
+ext.runRemapCommand = { List<String> cmd ->
+    println '  $ ' + cmd.join(' ')
+    def proc = new ProcessBuilder(cmd).redirectErrorStream(true).start()
+    proc.inputStream.eachLine { println '    ' + it }
+    int code = proc.waitFor()
+    if (code != 0) {
+        throw new Exception("SpecialSource remap failed (exit ${code})")
+    }
+}
 
 // Converts from Mojang's mappings to Minecraft's obfuscated mappings.
 ext.remapMojangToObfuscated = { inputFile, outputFile, craftbukkitVersion ->
@@ -55,16 +54,14 @@ ext.remapMojangToObfuscated = { inputFile, outputFile, craftbukkitVersion ->
     println '  Output: ' + outputFile.path
     println '  CraftBukkit version: ' + craftbukkitVersion
     def classpathSeparator = System.properties['path.separator']
-    exec {
-        commandLine 'java',
-                '-cp', "${specialSource}${classpathSeparator}${remappedMojang}".replace('{craftbukkitVersion}', craftbukkitVersion),
-                'net.md_5.specialsource.SpecialSource',
-                '--live',
-                '-i', inputFile.path,
-                '-o', outputFile.path,
-                '-m', mojangMappings,
-                '--reverse'
-    }
+    project.ext.runRemapCommand(['java',
+            '-cp', "${specialSource}${classpathSeparator}${remappedMojang}".replace('{craftbukkitVersion}', craftbukkitVersion),
+            'net.md_5.specialsource.SpecialSource',
+            '--live',
+            '-i', inputFile.path,
+            '-o', outputFile.path,
+            '-m', mojangMappings,
+            '--reverse'])
 }
 
 // Converts from Minecraft's obfuscated mappings to Spigot's mappings.
@@ -77,15 +74,13 @@ ext.remapObfuscatedToSpigot = { inputFile, outputFile, craftbukkitVersion ->
     println '  Output: ' + outputFile.path
     println '  CraftBukkit version: ' + craftbukkitVersion
     def classpathSeparator = System.properties['path.separator']
-    exec {
-        commandLine 'java',
-                '-cp', "${specialSource}${classpathSeparator}${remappedObf}".replace('{craftbukkitVersion}', craftbukkitVersion),
-                'net.md_5.specialsource.SpecialSource',
-                '--live',
-                '-i', inputFile.path,
-                '-o', outputFile.path,
-                '-m', spigotMappings
-    }
+    project.ext.runRemapCommand(['java',
+            '-cp', "${specialSource}${classpathSeparator}${remappedObf}".replace('{craftbukkitVersion}', craftbukkitVersion),
+            'net.md_5.specialsource.SpecialSource',
+            '--live',
+            '-i', inputFile.path,
+            '-o', outputFile.path,
+            '-m', spigotMappings])
 }
 
 // Converts from Mojang's mappings to Spigot's mappings.
@@ -95,6 +90,6 @@ ext.remapMojangToSpigot = { inputFile, intermediateFile, outputFile, craftbukkit
     println '  Intermediate: ' + intermediateFile.path
     println '  Output: ' + outputFile.path
     println '  CraftBukkit version: ' + craftbukkitVersion
-    remapMojangToObfuscated(inputFile, intermediateFile, craftbukkitVersion)
-    remapObfuscatedToSpigot(intermediateFile, outputFile, craftbukkitVersion)
+    project.remapMojangToObfuscated(inputFile, intermediateFile, craftbukkitVersion)
+    project.remapObfuscatedToSpigot(intermediateFile, outputFile, craftbukkitVersion)
 }
